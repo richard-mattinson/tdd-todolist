@@ -4,20 +4,22 @@ class TodoList {
     this.task = []
   }
 
-  // Create method
+  getAllTasks() {
+    return this.task
+  }
+
   create(taskName) {
     const newTask = {
       id: this.id,
       text: taskName,
       completed: false
     }
-    this.id++
-
     this.task.push(newTask)
-    return newTask
+    this.id++
+    return this.getAllTasks()
   }
 
-  taskCompleted(id) {
+  setComplete(id) {
     let locatedTask = false
     for (let i = 0; i < this.task.length; i++) {
       let currentTask = this.task[i]
