@@ -22,7 +22,7 @@ class TodoList {
   setComplete(id) {
     let locatedTask = false
     for (let i = 0; i < this.task.length; i++) {
-      let currentTask = this.task[i]
+      const currentTask = this.task[i]
       if (currentTask.id === id) {
         locatedTask = currentTask
       }
@@ -31,6 +31,28 @@ class TodoList {
       locatedTask.completed = true
     }
     return locatedTask
+  }
+
+  getComplete() {
+    return this.task.find((todoItem) => todoItem.completed === true)
+  }
+
+  getIncomplete() {
+    return this.task.find((todoItem) => todoItem.completed === false)
+  }
+
+  findById(id) {
+    const foundItem = this.task.find((todoItem) => todoItem.id === id)
+    if (foundItem) {
+      return foundItem
+    } else {
+      return `This task doesn't exist`
+    }
+  }
+
+  removeById(id) {
+    // (move one index back the array, delete one)
+    return this.task.splice(id--, 1)
   }
 }
 
